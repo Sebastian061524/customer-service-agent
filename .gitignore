@@ -1,0 +1,25 @@
+# ===== 密钥（绝对不能提交！）=====
+.env
+.env.local
+
+# ===== 运行生成的数据 =====
+*.db
+orders.txt
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+
+# ===== IDE =====
+.idea/
+.vscode/
+*.swp
+
+# ===== 系统 =====
+.DS_Store
+Thumbs.db
