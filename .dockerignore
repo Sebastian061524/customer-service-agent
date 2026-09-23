@@ -1,0 +1,16 @@
+# 构建镜像时排除这些文件，避免密钥和数据泄漏进镜像
+
+.env
+*.db
+orders.txt
+__pycache__/
+*.pyc
+.venv/
+venv/
+.git/
+.gitignore
+README.md
+eval_agent.py
+web_app.py
+Dockerfile
+docker-compose.yml

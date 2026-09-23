@@ -1,11 +1,39 @@
-langgraph
-langchain
-langchain-openai
-langchain-core
-langfuse
-langfuse-langchain
-sentence-transformers
-fastapi
-uvicorn
-gradio
-python-dotenv
+# ============================================================
+# 依赖清单（版本已固定）
+#
+# ⚠️ 为什么要写死版本号？
+#    不写版本 → pip 装最新版 → 本地能跑，Docker 里却可能装到
+#    不兼容的版本组合，导致「在我机器上能跑」的经典问题。
+#    锁定版本后，任何环境装出来的都一样。
+# ============================================================
+
+# Web 服务
+fastapi==0.141.1
+uvicorn==0.53.0
+python-dotenv==1.2.3
+
+# 快速界面（仅 web_app.py 需要）
+gradio==6.28.0
+
+# Agent 框架
+langgraph==1.2.11
+langgraph-checkpoint==4.2.0
+langgraph-checkpoint-sqlite==3.1.1
+langgraph-prebuilt==1.1.0
+langchain==1.4.2
+langchain-core==1.6.3
+langchain-openai==1.6.2
+
+# 可观测性
+# ⚠️ 注意：langfuse v4 已内置 langchain 集成（langfuse.langchain），
+#    不要额外安装 langfuse-langchain，两者会冲突。
+langfuse==4.15.4
+
+# RAG 检索
+# ⚠️ torch 不在这里 —— 由 Dockerfile 单独安装 CPU 版（体积小 2GB）
+sentence-transformers==6.1.0
+transformers==5.17.0
+numpy==2.5.3
+
+# 数据校验
+pydantic==2.13.5

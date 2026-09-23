@@ -1,0 +1,22 @@
+# ============================================================
+# docker compose —— 一条命令启动整个应用
+#   启动： docker compose up -d
+#   停止： docker compose down
+#   看日志：docker compose logs -f
+# ============================================================
+services:
+  agent:
+    build: .
+    image: customer-agent
+    container_name: customer-service-agent
+    ports:
+      - "8000:8000"
+    # 密钥从 .env 文件注入（不写进镜像）
+    env_file:
+      - .env
+    # 把宿主机上的数据文件挂进容器，这样数据不会随容器删除而丢失
+    volumes:
+      - ./customer_service.db:/app/customer_service.db
+      - ./orders.txt:/app/orders.txt
+    # 容器意外退出时自动重启
+    restart: unless-stopped
